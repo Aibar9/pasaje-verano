@@ -541,7 +541,6 @@ footer{
                                 estrellas (posicionadas en % pensando en pantallas anchas) terminan
                                 cayendo arriba de las palabras. Más simple ocultarlas acá que
                                 reacomodar cada una a mano para cada tamaño de pantalla. */
-   }
   footer{
     flex-direction:column; /* copyright, logo y texto pasan a apilarse uno debajo del otro */
     text-align:center;
