@@ -566,7 +566,7 @@ footer{
      siempre queda apretado. Se saca directamente en mobile: en
      desktop se ve bien porque hay espacio de sobra, pero en una
      pantalla angosta el texto necesita todo el ancho para él solo.) */
-  .hero{ padding-top:11vh; } /* antes 5vh — empuja todo el bloque (título,
+  .hero{ padding-top:9vh; } /* antes 5vh — empuja todo el bloque (título,
                                  texto, botones) hacia abajo para que se
                                  agrupe mejor en el espacio, en vez de
                                  quedar pegado arriba justo debajo del nav */
