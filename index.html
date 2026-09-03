@@ -438,14 +438,13 @@ document.addEventListener('keydown', function(e){
 
   function cerrarModalLanzamiento() {
     document.getElementById('overlayLanzamiento').style.display = 'none';
-    localStorage.setItem('lanzamientoVisto', 'true');
   }
 
   const fin = new Date(FECHA_FIN_LANZAMIENTO + "T23:59:59");
   const hoy = new Date();
 
   // Solo se muestra si: todavía no pasó la fecha límite Y el visitante no lo vio antes
-  if (hoy <= fin && !localStorage.getItem('lanzamientoVisto')) {
+  if (hoy <= fin ) {
     document.getElementById('overlayLanzamiento').style.display = 'flex';
   }
 
