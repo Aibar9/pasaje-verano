@@ -346,4 +346,110 @@ document.addEventListener('keydown', function(e){
 </script>
 
 </body>
+<!-- ===== MODAL DE LANZAMIENTO (dura hasta fin de septiembre) — pegar justo después de <body> ===== -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+  .overlay-lanzamiento {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 51, 161, 0.75); /* azul de marca con transparencia */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+    animation: fadeIn 0.3s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .tarjeta-lanzamiento {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 36px 28px;
+    max-width: 380px;
+    width: 100%;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    color: #0033A1;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+    border: 3px solid #FFA4B4;
+  }
+
+  .tarjeta-lanzamiento h2 {
+    font-family: 'Pacifico', cursive;
+    font-weight: 400;
+    font-size: 26px;
+    margin-bottom: 6px;
+  }
+
+  .tarjeta-lanzamiento .sub {
+    font-size: 13px;
+    color: #888;
+    margin-bottom: 18px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .tarjeta-lanzamiento p {
+    font-size: 16px;
+    line-height: 1.5;
+    font-weight: 600;
+  }
+
+  .tarjeta-lanzamiento .cerrar {
+    position: absolute;
+    top: 12px;
+    right: 14px;
+    background: none;
+    border: none;
+    color: #0033A1;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0.5;
+  }
+
+  .tarjeta-lanzamiento .cerrar:hover { opacity: 1; }
+
+  @media (max-width: 480px) {
+    .tarjeta-lanzamiento { padding: 28px 20px; }
+    .tarjeta-lanzamiento h2 { font-size: 22px; }
+  }
+</style>
+
+<div class="overlay-lanzamiento" id="overlayLanzamiento" style="display:none;">
+  <div class="tarjeta-lanzamiento" onclick="event.stopPropagation()">
+    <button class="cerrar" onclick="cerrarModalLanzamiento()" aria-label="Cerrar">✕</button>
+    <h2>Pasaje Verano</h2>
+    <div class="sub">¡Ya estamos online!</div>
+    <p>Celebramos el lanzamiento de nuestra web con 10% OFF en tu pedido</p>
+  </div>
+</div>
+
+<script>
+  // El modal deja de aparecer automáticamente después de esta fecha (inclusive).
+  const FECHA_FIN_LANZAMIENTO = "2026-09-30";
+
+  function cerrarModalLanzamiento() {
+    document.getElementById('overlayLanzamiento').style.display = 'none';
+    localStorage.setItem('lanzamientoVisto', 'true');
+  }
+
+  const fin = new Date(FECHA_FIN_LANZAMIENTO + "T23:59:59");
+  const hoy = new Date();
+
+  // Solo se muestra si: todavía no pasó la fecha límite Y el visitante no lo vio antes
+  if (hoy <= fin && !localStorage.getItem('lanzamientoVisto')) {
+    document.getElementById('overlayLanzamiento').style.display = 'flex';
+  }
+
+  document.getElementById('overlayLanzamiento').addEventListener('click', cerrarModalLanzamiento);
+</script>
+<!-- ===== FIN MODAL ===== -->
 </html>
